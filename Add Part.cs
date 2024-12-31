@@ -16,6 +16,10 @@ namespace C968
         public AddPart()
         {
             InitializeComponent();
+
+            //Populates the Part ID textbox value
+            int nextPartID = Inventory.Products.Count + 1;
+            partIDTextBox.Text = nextPartID.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)

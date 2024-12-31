@@ -63,6 +63,7 @@
             this.saveNewProductButton.TabIndex = 67;
             this.saveNewProductButton.Text = "Save";
             this.saveNewProductButton.UseVisualStyleBackColor = true;
+            this.saveNewProductButton.Click += new System.EventHandler(this.saveNewProductButton_Click);
             // 
             // cancelAddProductbutton
             // 
@@ -115,6 +116,7 @@
             this.addPartToItemButton.TabIndex = 62;
             this.addPartToItemButton.Text = "Add";
             this.addPartToItemButton.UseVisualStyleBackColor = true;
+            this.addPartToItemButton.Click += new System.EventHandler(this.addPartToItemButton_Click);
             // 
             // searchPartListButton
             // 

@@ -17,6 +17,8 @@ namespace C968
         public AddProduct()
         {
             InitializeComponent();
+            int nextProductID = Inventory.Products.Count + 1;
+            addProductIDTextBox.Text = nextProductID.ToString();
 
             //The top table contains a list of all parts, as also found on the home screen
             var topTable = new BindingSource();

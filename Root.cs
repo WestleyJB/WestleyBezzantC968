@@ -70,6 +70,7 @@ namespace C968
                     if (part.PartID == match.PartID)
                     {
                         row.Selected = true;
+                        partGridView.CurrentCell = row.Cells[0];
                         break;
                     }
                     else
@@ -134,7 +135,6 @@ namespace C968
             new ModifyProduct(selectedProd).Show();
         }
 
-        //You MUST have the ENTIRE row selected in order to delete it. You can do this by pressing the corresponding row from the column to the LEFT of the 'Part ID' column.
         private void DeletePartRoot_Click(object sender, EventArgs e)
         {
             if (partGridView.SelectedRows.Count == 0)
@@ -154,7 +154,6 @@ namespace C968
             else return;
         }
 
-        //There is an empty product-row that gets generated. It is not in my bound-list and it cannot be deleted. I put in exception handling for this case; all other products are able to be deleted when selected.
         private void DeleteProductRoot_Click(object sender, EventArgs e)
         {
             if (productGridView.SelectedRows.Count == 0)
@@ -163,6 +162,19 @@ namespace C968
                 return;
             }
 
+            foreach (DataGridViewRow row in productGridView.SelectedRows.Cast<DataGridViewRow>().ToList())
+            {
+                Product selectedProduct = (Product)row.DataBoundItem;
+
+                //Verifying whether a product has associated parts or not. I put it here because it needs to happen before the dialog box appears asking you to confirm that you want to delete a product.
+                if (selectedProduct.AssociatedParts.Count > 0)
+                {
+                    MessageBox.Show("This product has associated parts. You cannot delete a product with associated parts. Please remove the associated parts first and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            //The rest of the exception handling happens here, after the Yes/No message box appears.
             DialogResult result = MessageBox.Show("Do you want to delete? This cannot be undone.", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -202,7 +214,7 @@ namespace C968
 
                 if (match == null)
                 {
-                    MessageBox.Show("No part found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No product found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -214,6 +226,7 @@ namespace C968
                     if (product.ProductID == match.ProductID)
                     {
                         row.Selected = true;
+                        productGridView.CurrentCell = row.Cells[0];
                         break;
                     }
                     else
