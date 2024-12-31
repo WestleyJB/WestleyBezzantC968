@@ -158,6 +158,8 @@
             // 
             // productGridView
             // 
+            this.productGridView.AllowUserToAddRows = false;
+            this.productGridView.AllowUserToDeleteRows = false;
             this.productGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productGridView.Location = new System.Drawing.Point(468, 120);
             this.productGridView.Name = "productGridView";
@@ -179,6 +181,7 @@
             this.ProductsSearchButtonRoot.TabIndex = 9;
             this.ProductsSearchButtonRoot.Text = "Search";
             this.ProductsSearchButtonRoot.UseVisualStyleBackColor = true;
+            this.ProductsSearchButtonRoot.Click += new System.EventHandler(this.ProductsSearchButtonRoot_Click);
             // 
             // label3
             // 

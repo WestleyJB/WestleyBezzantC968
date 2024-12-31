@@ -50,5 +50,10 @@ namespace C968
         {
 
         }
+
+        private void cancelAddProductbutton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

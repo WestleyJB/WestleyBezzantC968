@@ -72,6 +72,7 @@
             this.cancelAddProductbutton.TabIndex = 66;
             this.cancelAddProductbutton.Text = "Cancel";
             this.cancelAddProductbutton.UseVisualStyleBackColor = true;
+            this.cancelAddProductbutton.Click += new System.EventHandler(this.cancelAddProductbutton_Click);
             // 
             // label9
             // 

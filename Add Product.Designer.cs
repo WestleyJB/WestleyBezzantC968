@@ -128,7 +128,7 @@
             this.addPartToItemButton.TabIndex = 85;
             this.addPartToItemButton.Text = "Add";
             this.addPartToItemButton.UseVisualStyleBackColor = true;
-            this.addPartToItemButton.Click += new System.EventHandler(this.addPartToItemButton_Click_1);
+            this.addPartToItemButton.Click += new System.EventHandler(this.addPartToItemButton_Click);
             // 
             // searchPartListButton
             // 

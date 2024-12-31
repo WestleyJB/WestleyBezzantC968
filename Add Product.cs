@@ -74,7 +74,7 @@ namespace C968
             addedParts.Add(partToAdd);
         }
 
-        private void SaveNewProductButton_Click(object sender, EventArgs e)
+        private void saveNewProductButton_Click(object sender, EventArgs e)
         {
             int inventory;
             int min;
@@ -113,7 +113,7 @@ namespace C968
                 return;
             }
             //This statement allows a user to create a new product and add it to their inventory.
-            Product product = new Product((Inventory.Products.Count + 1), name, inventory, price, max, min);
+            Product product = new Product(Inventory.Products.Count + 1, name, inventory, price, max, min);
             Inventory.AddProduct(product);
 
             foreach (Part part in addedParts)
@@ -124,10 +124,6 @@ namespace C968
         }
 
         //The visual [Design] file would throw errors if this was deleted, so it doesn't do anything but is here.
-        private void saveNewProductButton_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -135,11 +131,6 @@ namespace C968
         }
 
         private void addAssociatedPartsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void addPartToItemButton_Click_1(object sender, EventArgs e)
         {
 
         }

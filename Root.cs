@@ -16,6 +16,12 @@ namespace C968
         {
             InitializeComponent();
 
+            partGridView.RowHeadersVisible = false;
+            partGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            productGridView.RowHeadersVisible = false;
+            productGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             Inventory.ExampleItems();
 
             var partTable = new BindingSource();
@@ -55,6 +61,8 @@ namespace C968
                     MessageBox.Show("No part found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
+                partGridView.ClearSelection();
 
                 foreach (DataGridViewRow row in partGridView.Rows)
                 {
@@ -177,6 +185,47 @@ namespace C968
                 }
             }
             else return;
+        }
+
+        private void ProductsSearchButtonRoot_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int searchValue = int.Parse(ProductsSearchBarRoot.Text);
+                if (searchValue < 1)
+                {
+                    MessageBox.Show("Please enter a value greater than 0", "Invalid Number", MessageBoxButtons.OK);
+                    return;
+                }
+
+                Product match = Inventory.LookupProduct(searchValue);
+
+                if (match == null)
+                {
+                    MessageBox.Show("No part found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                productGridView.ClearSelection();
+
+                foreach (DataGridViewRow row in productGridView.Rows)
+                {
+                    Product product = (Product)row.DataBoundItem;
+                    if (product.ProductID == match.ProductID)
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                    else
+                    {
+                        row.Selected = false;
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid integer for the Product ID.");
+            }
         }
     }
 }
