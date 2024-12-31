@@ -103,13 +103,13 @@ namespace C968
         }
         public static void ExampleItems()
         {
-            Product exampleProd = new Product(1, "Unicycle", 18, 100.0m, 13, 2);
-            Product exampleProd2 = new Product(2, "Bicycle", 7, 200.0m, 5, 1);
+            Product exampleProd = new Product(1, "Unicycle", 18, 100.0m, 100, 1);
+            Product exampleProd2 = new Product(2, "Bicycle", 7, 200.0m, 100, 1);
             Products.Add(exampleProd);
             Products.Add(exampleProd2);
 
-            Part exampleInPart = new InHousePart(1, "Bike Wheel", 34, 20.0m, 19, 1, 001);
-            Part exampleOutPart = new OutsourcedPart(2, "Bike Seat", 76, 15.0m, 32, 2, "Bicycles LLC");
+            Part exampleInPart = new InHousePart(1, "Bike Wheel", 34, 20.0m, 100, 1, 001);
+            Part exampleOutPart = new OutsourcedPart(2, "Bike Seat", 76, 15.0m, 100, 2, "Bicycles LLC");
             Parts.Add(exampleInPart);
             Parts.Add(exampleOutPart);
 

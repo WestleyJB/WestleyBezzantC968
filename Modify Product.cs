@@ -109,5 +109,61 @@ namespace C968
             Inventory.UpdateProduct(id, product);
             Close();
         }
+
+        private void deleteAssociatedPartButton_Click(object sender, EventArgs e)
+        {
+            Part part = (Part)modAssociatedPartsGrid.CurrentRow.DataBoundItem;
+            int id = int.Parse(modProductIDTextBox.Text);
+
+            Product product = Inventory.LookupProduct(id);
+            product.RemoveAssociatedPart(part.PartID);
+
+            foreach (DataGridViewRow row in modAssociatedPartsGrid.SelectedRows)
+            {
+                modAssociatedPartsGrid.Rows.RemoveAt(row.Index);
+            }
+        }
+
+        private void searchPartListButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int searchValue = int.Parse(modPartSearchTextBox.Text);
+                if (searchValue < 1)
+                {
+                    MessageBox.Show("Please enter a value greater than 0", "Invalid Number", MessageBoxButtons.OK);
+                    return;
+                }
+
+                Part match = Inventory.LookupPart(searchValue);
+
+                if (match == null)
+                {
+                    MessageBox.Show("No part found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                modCandidatePartsGrid.ClearSelection();
+
+                foreach (DataGridViewRow row in modCandidatePartsGrid.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.PartID == match.PartID)
+                    {
+                        row.Selected = true;
+                        modCandidatePartsGrid.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                    else
+                    {
+                        row.Selected = false;
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid integer for the Part ID.");
+            }
+        }
     }
 }

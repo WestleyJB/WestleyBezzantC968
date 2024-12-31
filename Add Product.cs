@@ -36,37 +36,54 @@ namespace C968
             Close();
         }
 
-        private void DeleteAssociatedPartButton_Click(object sender, EventArgs e)
+        private void deleteAssociatedPartButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you really want to delete this part?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            foreach (DataGridViewRow row in addAssociatedPartsGrid.SelectedRows)
             {
-
-                foreach (DataGridViewRow row in addAssociatedPartsGrid.SelectedRows)
-                {
-                    addAssociatedPartsGrid.Rows.RemoveAt(row.Index);
-                }
+                addAssociatedPartsGrid.Rows.RemoveAt(row.Index);
+                return;
             }
-            else return;
-
         }
 
-        private void SearchPartListButton_Click(object sender, EventArgs e)
+        private void searchPartListButton_Click(object sender, EventArgs e)
         {
-            int partID = int.Parse(addPartSearchTextBox.Text);
-            Part match = Inventory.LookupPart(partID);
-            foreach (DataGridViewRow row in addCandidatePartsGrid.Rows)
+            try
             {
-                Part part = (Part)row.DataBoundItem;
-                if (part.PartID == match.PartID)
+                int searchValue = int.Parse(addPartSearchTextBox.Text);
+                if (searchValue < 1)
                 {
-                    row.Selected = true;
-                    break;
+                    MessageBox.Show("Please enter a value greater than 0", "Invalid Number", MessageBoxButtons.OK);
+                    return;
                 }
-                else
+
+                Part match = Inventory.LookupPart(searchValue);
+
+                if (match == null)
                 {
-                    row.Selected = false;
+                    MessageBox.Show("No part found with ID: " + searchValue, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
+
+                addCandidatePartsGrid.ClearSelection();
+
+                foreach (DataGridViewRow row in addCandidatePartsGrid.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.PartID == match.PartID)
+                    {
+                        row.Selected = true;
+                        addCandidatePartsGrid.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                    else
+                    {
+                        row.Selected = false;
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid integer for the Part ID.");
             }
         }
 
@@ -133,6 +150,16 @@ namespace C968
         }
 
         private void addAssociatedPartsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void deleteAssociatedPartButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchPartListButton_Click_1(object sender, EventArgs e)
         {
 
         }

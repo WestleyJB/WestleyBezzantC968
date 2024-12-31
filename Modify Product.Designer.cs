@@ -92,6 +92,7 @@
             this.deleteAssociatedPartButton.TabIndex = 64;
             this.deleteAssociatedPartButton.Text = "Delete";
             this.deleteAssociatedPartButton.UseVisualStyleBackColor = true;
+            this.deleteAssociatedPartButton.Click += new System.EventHandler(this.deleteAssociatedPartButton_Click);
             // 
             // modAssociatedPartsGrid
             // 
@@ -126,6 +127,7 @@
             this.searchPartListButton.TabIndex = 61;
             this.searchPartListButton.Text = "Search";
             this.searchPartListButton.UseVisualStyleBackColor = true;
+            this.searchPartListButton.Click += new System.EventHandler(this.searchPartListButton_Click);
             // 
             // modPartSearchTextBox
             // 
