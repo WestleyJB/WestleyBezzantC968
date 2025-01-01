@@ -170,7 +170,6 @@
             this.modProductNameTextBox.Name = "modProductNameTextBox";
             this.modProductNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.modProductNameTextBox.TabIndex = 55;
-            this.modProductNameTextBox.TextChanged += new System.EventHandler(this.modProductNameTextBox_TextChanged);
             // 
             // modProductIDTextBox
             // 
@@ -203,7 +202,6 @@
             this.modCandidatePartsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.modCandidatePartsGrid.Size = new System.Drawing.Size(426, 119);
             this.modCandidatePartsGrid.TabIndex = 52;
-            this.modCandidatePartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modCandidatePartsGrid_CellContentClick);
             // 
             // label7
             // 

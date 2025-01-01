@@ -64,7 +64,6 @@
             this.label2.Size = new System.Drawing.Size(141, 25);
             this.label2.TabIndex = 91;
             this.label2.Text = "Add Product";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // saveNewProductButton
             // 
@@ -119,7 +118,6 @@
             this.addAssociatedPartsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.addAssociatedPartsGrid.Size = new System.Drawing.Size(426, 119);
             this.addAssociatedPartsGrid.TabIndex = 86;
-            this.addAssociatedPartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addAssociatedPartsGrid_CellContentClick);
             // 
             // addPartToItemButton
             // 

@@ -22,11 +22,6 @@ namespace C968
             partIDTextBox.Text = nextPartID.ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddPartSave_Click(object sender, EventArgs e)
         {
             int minStock;

@@ -67,7 +67,6 @@
             this.label2.Size = new System.Drawing.Size(251, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Inventory Management";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // PartsSearchButtonRoot
             // 
@@ -85,7 +84,6 @@
             this.PartsSearchBarRoot.Name = "PartsSearchBarRoot";
             this.PartsSearchBarRoot.Size = new System.Drawing.Size(189, 20);
             this.PartsSearchBarRoot.TabIndex = 3;
-            this.PartsSearchBarRoot.TextChanged += new System.EventHandler(this.PartsSearchBarRoot_TextChanged);
             // 
             // partGridView
             // 
@@ -94,7 +92,6 @@
             this.partGridView.Name = "partGridView";
             this.partGridView.Size = new System.Drawing.Size(379, 218);
             this.partGridView.TabIndex = 4;
-            this.partGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPartsRoot_CellContentClick);
             // 
             // AddPartRoot
             // 
@@ -192,7 +189,6 @@
             this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Products";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // ExitRoot
             // 
@@ -227,7 +223,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Root";
             this.Text = "Inventory Management";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.partGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productGridView)).EndInit();
             this.ResumeLayout(false);

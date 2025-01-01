@@ -17,6 +17,7 @@ namespace C968
         public AddProduct()
         {
             InitializeComponent();
+            //This populates the Product ID text box with the new Product ID
             int nextProductID = Inventory.Products.Count + 1;
             addProductIDTextBox.Text = nextProductID.ToString();
 
@@ -30,21 +31,6 @@ namespace C968
             botTable.DataSource = addedParts;
             addAssociatedPartsGrid.DataSource = botTable;
         }
-
-        private void cancelAddProductbutton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void deleteAssociatedPartButton_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in addAssociatedPartsGrid.SelectedRows)
-            {
-                addAssociatedPartsGrid.Rows.RemoveAt(row.Index);
-                return;
-            }
-        }
-
         private void searchPartListButton_Click(object sender, EventArgs e)
         {
             try
@@ -86,13 +72,23 @@ namespace C968
                 MessageBox.Show("Please enter a valid integer for the Part ID.");
             }
         }
-
         private void addPartToItemButton_Click(object sender, EventArgs e)
         {
             Part partToAdd = (Part)addCandidatePartsGrid.CurrentRow.DataBoundItem;
             addedParts.Add(partToAdd);
         }
-
+        private void deleteAssociatedPartButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in addAssociatedPartsGrid.SelectedRows)
+            {
+                addAssociatedPartsGrid.Rows.RemoveAt(row.Index);
+                return;
+            }
+        }
+        private void cancelAddProductbutton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         private void saveNewProductButton_Click(object sender, EventArgs e)
         {
             int inventory;
@@ -125,7 +121,7 @@ namespace C968
                 MessageBox.Show("Error: 'Min' value cannot be greater than 'max' value. Please try again.");
                 return;
             }
-
+            //This statement prevents our inventory from being higher than our max or lower than our min.
             if (inventory > max || inventory < min)
             {
                 MessageBox.Show("Error: 'Inventory' value must be between 'Max' and 'Min' values. Please try again.");
@@ -140,28 +136,6 @@ namespace C968
                 product.AddAssociatedPart(part);
             }
             Close();
-        }
-
-        //The visual [Design] file would throw errors if this was deleted, so it doesn't do anything but is here.
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addAssociatedPartsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void deleteAssociatedPartButton_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchPartListButton_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

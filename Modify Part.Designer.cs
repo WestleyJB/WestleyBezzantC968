@@ -58,7 +58,6 @@
             this.label2.Size = new System.Drawing.Size(132, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Modify Part";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // PartsIHRadio
             // 
@@ -92,7 +91,6 @@
             this.PartsID.Size = new System.Drawing.Size(18, 13);
             this.PartsID.TabIndex = 4;
             this.PartsID.Text = "ID";
-            this.PartsID.Click += new System.EventHandler(this.label1_Click);
             // 
             // PartsName
             // 
@@ -129,7 +127,6 @@
             this.PartsMax.Size = new System.Drawing.Size(27, 13);
             this.PartsMax.TabIndex = 8;
             this.PartsMax.Text = "Max";
-            this.PartsMax.Click += new System.EventHandler(this.label6_Click);
             // 
             // PartsMachineORCompanyID
             // 
@@ -245,7 +242,6 @@
             this.Controls.Add(this.label2);
             this.Name = "ModifyParts";
             this.Text = "Modify Parts";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
